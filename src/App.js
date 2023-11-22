@@ -19,8 +19,21 @@ function checkInput(inputValue){
 
 function App() {
   const [isLoading,setIsLoading] = useState(false);
-  const handleCheckButtonClick = (inputValue) => {
+  const [message, setMessage] = useState('');
+
+  const handleCheckButtonClick = async (inputValue) => {
     setIsLoading(true);
+
+    try{
+      const response = await checkInput(inputValue);
+      console.log(response);
+      setMessage(response.message);
+    } catch (error) {
+      console.error(error);
+      setMessage('Error occured.');
+    } finally{
+      setIsLoading(false);
+    }
 
   }
 
@@ -29,7 +42,8 @@ function App() {
       <GamePicture />
       <Scramble />
       <PlayerInput />
-      <CheckButton />
+      <CheckButton onClick={handleCheckButtonClick} disabled={isLoading} />
+      <p>{message}</p>
     </>
   )
 }  
