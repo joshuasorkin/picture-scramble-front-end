@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header/Header';
+import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import Chat from './components/Chat/Chat';
+import Home from './components/Home/Home';
+import DataDisplay from './components/DataDisplay/DataDisplay';
+import {Route,Routes} from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+  return(
+    <>
+        <SocketContext.Provider value={socket}>
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<RegistrationForm />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/display" element={<DataDisplay />} />
+            </Routes>
+          </div>
+        </SocketContext.Provider>
+    </>
+  )
+}  
 export default App;
