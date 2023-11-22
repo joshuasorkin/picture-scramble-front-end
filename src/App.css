@@ -1,3 +1,10 @@
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Optional: Center items horizontally */
+  /* Add any additional styling as needed */
+}
+
 .App {
   text-align: center;
 }

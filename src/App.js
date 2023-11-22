@@ -73,9 +73,11 @@ function App() {
   return(
     <>
       <GamePicture imageUrl={imageUrl} />
-      <Scramble word={scrambledWord} />
-      <PlayerInput />
-      <CheckButton onClick={handleCheckButtonClick} disabled={isLoading} />
+      <div class='input-section'>
+        <Scramble word={scrambledWord} />
+        <PlayerInput />
+        <CheckButton onClick={handleCheckButtonClick} disabled={isLoading} />
+      </div>
       <p>{message}</p>
     </>
   )
