@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './GamePicture.css';
 
 export default function GamePicture({imageUrl}){
+    console.log("Image url:",imageUrl);
     const [isSpinning,setIsSpinning] = useState(false);
 
     const handleSpinClick = () => {

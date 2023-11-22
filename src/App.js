@@ -11,8 +11,8 @@ function checkInput(inputValue){
         resolve({
           status:'success',
           message: `Input value '${inputValue}' checked.`
-        },2000);
-      }
+        });
+      },2000
     )
   });
 }
@@ -73,7 +73,7 @@ function App() {
   return(
     <>
       <GamePicture imageUrl={imageUrl} />
-      <Scramble scrambledWord={scrambledWord} />
+      <Scramble word={scrambledWord} />
       <PlayerInput />
       <CheckButton onClick={handleCheckButtonClick} disabled={isLoading} />
       <p>{message}</p>
