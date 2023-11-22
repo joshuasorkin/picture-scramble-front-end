@@ -3,6 +3,7 @@ import CheckButton from './components/CheckButton/CheckButton';
 import PlayerInput from './components/PlayerInput/PlayerInput';
 import Scramble from './components/Scramble/Scramble';
 import React, {useState, useEffect} from 'react';
+import './App.css';
 
 
 function checkInput(inputValue){
@@ -72,8 +73,8 @@ function App() {
 
   return(
     <>
-      <GamePicture imageUrl={imageUrl} />
-      <div class='input-section'>
+      <div className='input-section'>
+        <GamePicture imageUrl={imageUrl} />
         <Scramble word={scrambledWord} />
         <PlayerInput />
         <CheckButton onClick={handleCheckButtonClick} disabled={isLoading} />
