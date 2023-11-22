@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './GamePicture.css';
 
 export default function GamePicture({imageUrl}){
     const [isSpinning,setIsSpinning] = useState(false);
