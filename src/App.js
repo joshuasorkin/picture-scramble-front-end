@@ -51,7 +51,9 @@ function App() {
         setIsLoading(false);
       }
     }
-  })
+    startNewGame();
+  },[]);
+
   const handleCheckButtonClick = async (inputValue) => {
     setIsLoading(true);
 
