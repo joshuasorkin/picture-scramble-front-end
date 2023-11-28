@@ -18,6 +18,7 @@ function checkInput(inputValue){
   });
 }
 
+/*
 function fetchGameData(){
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -27,6 +28,28 @@ function fetchGameData(){
       });
     },2000);
   })
+}
+*/
+
+function fetchGameData() {
+  const apiUrl = 'https://your-api-server.com/game-data'; // Replace with your actual API endpoint
+
+  return fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Assuming the response contains scrambledWord and imageUrl properties
+      const { scrambledWord, imageUrl } = data;
+      return { scrambledWord, imageUrl };
+    })
+    .catch((error) => {
+      console.error('Error fetching game data:', error);
+      throw error;
+    });
 }
 
 function App() {
