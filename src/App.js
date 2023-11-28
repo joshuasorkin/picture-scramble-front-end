@@ -32,7 +32,7 @@ function fetchGameData(){
 */
 
 function fetchGameData() {
-  const apiUrl = 'https://your-api-server.com/game-data'; // Replace with your actual API endpoint
+  const apiUrl = process.env.SERVER_URI + "/new-game"; // Replace with your actual API endpoint
 
   return fetch(apiUrl)
     .then((response) => {
