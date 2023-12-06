@@ -32,24 +32,28 @@ function fetchGameData(){
 */
 
 function fetchGameData() {
-  const apiUrl = process.env.SERVER_URI + "/new-game"; // Replace with your actual API endpoint
-
-  return fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Assuming the response contains scrambledWord and imageUrl properties
-      const { scrambledWord, imageUrl } = data;
-      return { scrambledWord, imageUrl };
-    })
-    .catch((error) => {
-      console.error('Error fetching game data:', error);
-      throw error;
-    });
+  console.log("constructing url...");
+  const apiUrl = process.env.REACT_APP_SERVER_URI + "/new-game";
+  console.log({ apiUrl });
+  return fetch(apiUrl, {
+    method: 'GET',
+    mode: 'cors'
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Convert to JSON first
+  })
+  .then((data) => {
+    console.log("response:", data); // Log the JSON response
+    console.log({ data });
+    return data;
+  })
+  .catch((error) => {
+    console.error('Error fetching game data:', error);
+    throw error;
+  });
 }
 
 function App() {
@@ -62,9 +66,10 @@ function App() {
     async function startNewGame() {
       setIsLoading(true);
       try{
-        const {scrambledWord, imageUrl} = await fetchGameData();
-        setScrambledWord(scrambledWord);
-        setImageUrl(imageUrl);
+        console.log("fetching game data...");
+        const gameData = await fetchGameData();
+        setScrambledWord(gameData.scramble);
+        setImageUrl(gameData.picture);
         setMessage('');
       }
       catch (error){
